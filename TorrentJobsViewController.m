@@ -115,7 +115,7 @@
 
 - (void) refreshDownloadUploadTotals {
     NSUInteger uploadSpeed = 0, downloadSpeed = 0;
-    for (NSDictionary * dict in TorrentDelegate.sharedInstance.currentSelectedClient.getJobsDict.allKeys) {
+    for (NSDictionary * dict in TorrentDelegate.sharedInstance.currentSelectedClient.getJobsDict.allValues) {
         if (dict[@"rawUploadSpeed"] && dict[@"rawDownloadSpeed"]) {
             uploadSpeed += [dict[@"rawUploadSpeed"] integerValue];
             downloadSpeed += [dict[@"rawDownloadSpeed"] integerValue];
