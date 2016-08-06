@@ -7,14 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E6CBAB70DE11775D95CDF2D /* libPods-TransmissionManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EAC8C5629A9F04035AB43CC /* libPods-TransmissionManager.a */; };
+		418A1F0FAFAF54D13FFB7E87 /* libPods-TransmissionManagerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B961D45241412D67F0A985BD /* libPods-TransmissionManagerTests.a */; };
+		9F68BD9570D22BBB1CC3AD2C /* libPods-TransmissionManagerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575E292385F970F9D764B31 /* libPods-TransmissionManagerUITests.a */; };
+		AC0866A11D447DFB00DFA65F /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0866A01D447DFB00DFA65F /* AppConfig.m */; };
+		AC09B32E1D4789FB004EFEB7 /* NSString+StringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC09B32D1D4789FB004EFEB7 /* NSString+StringCategory.m */; };
+		AC29AB751D3E4372007A1750 /* TorrentDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29AB741D3E4372007A1750 /* TorrentDelegate.m */; };
+		AC29AB781D3E43B1007A1750 /* TorrentClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29AB771D3E43B1007A1750 /* TorrentClient.m */; };
+		AC2E1FC81D4A3B9B00507252 /* NSNumber+StringCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2E1FC71D4A3B9B00507252 /* NSNumber+StringCategory.m */; };
 		AC4D78791D22A29B0034A33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4D78781D22A29B0034A33F /* main.m */; };
 		AC4D787C1D22A29B0034A33F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4D787B1D22A29B0034A33F /* AppDelegate.m */; };
-		AC4D787F1D22A29B0034A33F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4D787E1D22A29B0034A33F /* ViewController.m */; };
 		AC4D78821D22A29B0034A33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4D78801D22A29B0034A33F /* Main.storyboard */; };
 		AC4D78841D22A29B0034A33F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC4D78831D22A29B0034A33F /* Assets.xcassets */; };
 		AC4D78871D22A29B0034A33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4D78851D22A29B0034A33F /* LaunchScreen.storyboard */; };
 		AC4D78921D22A29B0034A33F /* TransmissionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4D78911D22A29B0034A33F /* TransmissionManagerTests.m */; };
 		AC4D789D1D22A29B0034A33F /* TransmissionManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4D789C1D22A29B0034A33F /* TransmissionManagerUITests.m */; };
+		AC55F6341D2E775E00A36505 /* TorrentJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC55F6321D2E775E00A36505 /* TorrentJobsViewController.m */; };
+		AC55F6351D2E775E00A36505 /* TorrentJobsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC55F6331D2E775E00A36505 /* TorrentJobsViewController.xib */; };
+		AC9066241D435A3500774D7E /* Transmission.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9066231D435A3500774D7E /* Transmission.m */; };
+		AC9066271D435AF700774D7E /* uTorrent.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9066261D435AF700774D7E /* uTorrent.m */; };
+		ACAEF4C71D366A62005086C7 /* AddClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAEF4C61D366A62005086C7 /* AddClientViewController.m */; };
+		ACBD313B1D2D2DCA00CC3A74 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD312D1D2D2DCA00CC3A74 /* gear.png */; };
+		ACBD313C1D2D2DCA00CC3A74 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD312E1D2D2DCA00CC3A74 /* gear@2x.png */; };
+		ACBD313D1D2D2DCA00CC3A74 /* Gripper.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD312F1D2D2DCA00CC3A74 /* Gripper.png */; };
+		ACBD313E1D2D2DCA00CC3A74 /* Gripper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31301D2D2DCA00CC3A74 /* Gripper@2x.png */; };
+		ACBD313F1D2D2DCA00CC3A74 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31311D2D2DCA00CC3A74 /* info.png */; };
+		ACBD31401D2D2DCA00CC3A74 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31321D2D2DCA00CC3A74 /* info@2x.png */; };
+		ACBD31411D2D2DCA00CC3A74 /* PlayPause.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31331D2D2DCA00CC3A74 /* PlayPause.png */; };
+		ACBD31421D2D2DCA00CC3A74 /* PlayPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31341D2D2DCA00CC3A74 /* PlayPause@2x.png */; };
+		ACBD31431D2D2DCA00CC3A74 /* UIButtonBarPause.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31351D2D2DCA00CC3A74 /* UIButtonBarPause.png */; };
+		ACBD31441D2D2DCA00CC3A74 /* UIButtonBarPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31361D2D2DCA00CC3A74 /* UIButtonBarPause@2x.png */; };
+		ACBD31451D2D2DCA00CC3A74 /* UIButtonBarPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31371D2D2DCA00CC3A74 /* UIButtonBarPlay.png */; };
+		ACBD31461D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31381D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png */; };
+		ACBD31471D2D2DCA00CC3A74 /* UIButtonBarStop.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31391D2D2DCA00CC3A74 /* UIButtonBarStop.png */; };
+		ACBD31481D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD313A1D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png */; };
+		ACCE29CA1D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE29C91D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m */; };
+		ACE54E721D30F03900C3B3F0 /* JobsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE54E711D30F03900C3B3F0 /* JobsTableCell.m */; };
+		ACE54E781D311CFE00C3B3F0 /* TorrentClientsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE54E771D311CFE00C3B3F0 /* TorrentClientsTabViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +64,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E4D7F3462374B957FB20DA8 /* Pods-TransmissionManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManager/Pods-TransmissionManager.debug.xcconfig"; sourceTree = "<group>"; };
+		2302CEC5DFBA268E5652FF91 /* Pods-TransmissionManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManager/Pods-TransmissionManager.release.xcconfig"; sourceTree = "<group>"; };
+		361CD123037A91DF264C46AD /* Pods-TransmissionManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManagerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManagerUITests/Pods-TransmissionManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C31FF2CC531885BBBDB3C5D /* Pods-TransmissionManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManagerTests/Pods-TransmissionManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		53F89882C992612CC562ACDE /* Pods-TransmissionManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManagerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManagerUITests/Pods-TransmissionManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6EAC8C5629A9F04035AB43CC /* libPods-TransmissionManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmissionManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8575E292385F970F9D764B31 /* libPods-TransmissionManagerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmissionManagerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F78276FF178F54368BA490E /* Pods-TransmissionManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransmissionManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransmissionManagerTests/Pods-TransmissionManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC08669F1D447DFB00DFA65F /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../AppConfig.h; sourceTree = "<group>"; };
+		AC0866A01D447DFB00DFA65F /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConfig.m; path = ../AppConfig.m; sourceTree = "<group>"; };
+		AC09B32C1D4789FB004EFEB7 /* NSString+StringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringCategory.h"; sourceTree = "<group>"; };
+		AC09B32D1D4789FB004EFEB7 /* NSString+StringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringCategory.m"; sourceTree = "<group>"; };
+		AC29AB731D3E4372007A1750 /* TorrentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentDelegate.h; sourceTree = "<group>"; };
+		AC29AB741D3E4372007A1750 /* TorrentDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentDelegate.m; sourceTree = "<group>"; };
+		AC29AB761D3E43B1007A1750 /* TorrentClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentClient.h; sourceTree = "<group>"; };
+		AC29AB771D3E43B1007A1750 /* TorrentClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentClient.m; sourceTree = "<group>"; };
+		AC2E1FC61D4A3B9B00507252 /* NSNumber+StringCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+StringCategory.h"; sourceTree = "<group>"; };
+		AC2E1FC71D4A3B9B00507252 /* NSNumber+StringCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+StringCategory.m"; sourceTree = "<group>"; };
 		AC4D78741D22A29B0034A33F /* TransmissionManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransmissionManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4D78781D22A29B0034A33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC4D787A1D22A29B0034A33F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC4D787B1D22A29B0034A33F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AC4D787D1D22A29B0034A33F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AC4D787E1D22A29B0034A33F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC4D78811D22A29B0034A33F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC4D78831D22A29B0034A33F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC4D78861D22A29B0034A33F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +96,37 @@
 		AC4D78981D22A29B0034A33F /* TransmissionManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransmissionManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4D789C1D22A29B0034A33F /* TransmissionManagerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransmissionManagerUITests.m; sourceTree = "<group>"; };
 		AC4D789E1D22A29B0034A33F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC55F6311D2E775E00A36505 /* TorrentJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorrentJobsViewController.h; path = ../TorrentJobsViewController.h; sourceTree = "<group>"; };
+		AC55F6321D2E775E00A36505 /* TorrentJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentJobsViewController.m; path = ../TorrentJobsViewController.m; sourceTree = "<group>"; };
+		AC55F6331D2E775E00A36505 /* TorrentJobsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TorrentJobsViewController.xib; path = ../TorrentJobsViewController.xib; sourceTree = "<group>"; };
+		AC9066221D435A3500774D7E /* Transmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transmission.h; sourceTree = "<group>"; };
+		AC9066231D435A3500774D7E /* Transmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transmission.m; sourceTree = "<group>"; };
+		AC9066251D435AF700774D7E /* uTorrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uTorrent.h; sourceTree = "<group>"; };
+		AC9066261D435AF700774D7E /* uTorrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uTorrent.m; sourceTree = "<group>"; };
+		ACAEF4C51D366A62005086C7 /* AddClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddClientViewController.h; sourceTree = "<group>"; };
+		ACAEF4C61D366A62005086C7 /* AddClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddClientViewController.m; sourceTree = "<group>"; };
+		ACBD312D1D2D2DCA00CC3A74 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = Pictures/gear.png; sourceTree = SOURCE_ROOT; };
+		ACBD312E1D2D2DCA00CC3A74 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gear@2x.png"; path = "Pictures/gear@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD312F1D2D2DCA00CC3A74 /* Gripper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gripper.png; path = Pictures/Gripper.png; sourceTree = SOURCE_ROOT; };
+		ACBD31301D2D2DCA00CC3A74 /* Gripper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gripper@2x.png"; path = "Pictures/Gripper@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD31311D2D2DCA00CC3A74 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = Pictures/info.png; sourceTree = SOURCE_ROOT; };
+		ACBD31321D2D2DCA00CC3A74 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "Pictures/info@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD31331D2D2DCA00CC3A74 /* PlayPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlayPause.png; path = Pictures/PlayPause.png; sourceTree = SOURCE_ROOT; };
+		ACBD31341D2D2DCA00CC3A74 /* PlayPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlayPause@2x.png"; path = "Pictures/PlayPause@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD31351D2D2DCA00CC3A74 /* UIButtonBarPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIButtonBarPause.png; path = Pictures/UIButtonBarPause.png; sourceTree = SOURCE_ROOT; };
+		ACBD31361D2D2DCA00CC3A74 /* UIButtonBarPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIButtonBarPause@2x.png"; path = "Pictures/UIButtonBarPause@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD31371D2D2DCA00CC3A74 /* UIButtonBarPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIButtonBarPlay.png; path = Pictures/UIButtonBarPlay.png; sourceTree = SOURCE_ROOT; };
+		ACBD31381D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIButtonBarPlay@2x.png"; path = "Pictures/UIButtonBarPlay@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD31391D2D2DCA00CC3A74 /* UIButtonBarStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIButtonBarStop.png; path = Pictures/UIButtonBarStop.png; sourceTree = SOURCE_ROOT; };
+		ACBD313A1D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIButtonBarStop@2x.png"; path = "Pictures/UIButtonBarStop@2x.png"; sourceTree = SOURCE_ROOT; };
+		ACBD314A1D2D3AD300CC3A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		ACCE29C51D2FD1C00037C117 /* TorrentJobsViewController+NavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TorrentJobsViewController+NavBar.h"; sourceTree = "<group>"; };
+		ACCE29C91D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TorrentJobsViewController+NavBar.m"; sourceTree = "<group>"; };
+		ACE54E701D30F03900C3B3F0 /* JobsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsTableCell.h; sourceTree = "<group>"; };
+		ACE54E711D30F03900C3B3F0 /* JobsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsTableCell.m; sourceTree = "<group>"; };
+		ACE54E761D311CFE00C3B3F0 /* TorrentClientsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentClientsTabViewController.h; sourceTree = "<group>"; };
+		ACE54E771D311CFE00C3B3F0 /* TorrentClientsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentClientsTabViewController.m; sourceTree = "<group>"; };
+		B961D45241412D67F0A985BD /* libPods-TransmissionManagerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmissionManagerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6CBAB70DE11775D95CDF2D /* libPods-TransmissionManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418A1F0FAFAF54D13FFB7E87 /* libPods-TransmissionManagerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +150,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F68BD9570D22BBB1CC3AD2C /* libPods-TransmissionManagerUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		082C402CFF9FBEB4FDD50D19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E4D7F3462374B957FB20DA8 /* Pods-TransmissionManager.debug.xcconfig */,
+				2302CEC5DFBA268E5652FF91 /* Pods-TransmissionManager.release.xcconfig */,
+				9F78276FF178F54368BA490E /* Pods-TransmissionManagerTests.debug.xcconfig */,
+				4C31FF2CC531885BBBDB3C5D /* Pods-TransmissionManagerTests.release.xcconfig */,
+				361CD123037A91DF264C46AD /* Pods-TransmissionManagerUITests.debug.xcconfig */,
+				53F89882C992612CC562ACDE /* Pods-TransmissionManagerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		34641F07755B663C8CF2A05F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EAC8C5629A9F04035AB43CC /* libPods-TransmissionManager.a */,
+				B961D45241412D67F0A985BD /* libPods-TransmissionManagerTests.a */,
+				8575E292385F970F9D764B31 /* libPods-TransmissionManagerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC4D786B1D22A29B0034A33F = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +187,8 @@
 				AC4D78901D22A29B0034A33F /* TransmissionManagerTests */,
 				AC4D789B1D22A29B0034A33F /* TransmissionManagerUITests */,
 				AC4D78751D22A29B0034A33F /* Products */,
+				082C402CFF9FBEB4FDD50D19 /* Pods */,
+				34641F07755B663C8CF2A05F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,15 +205,38 @@
 		AC4D78761D22A29B0034A33F /* TransmissionManager */ = {
 			isa = PBXGroup;
 			children = (
+				AC08669F1D447DFB00DFA65F /* AppConfig.h */,
+				AC0866A01D447DFB00DFA65F /* AppConfig.m */,
+				AC55F6311D2E775E00A36505 /* TorrentJobsViewController.h */,
+				ACCE29C51D2FD1C00037C117 /* TorrentJobsViewController+NavBar.h */,
+				ACCE29C91D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m */,
+				AC55F6321D2E775E00A36505 /* TorrentJobsViewController.m */,
+				AC55F6331D2E775E00A36505 /* TorrentJobsViewController.xib */,
 				AC4D787A1D22A29B0034A33F /* AppDelegate.h */,
 				AC4D787B1D22A29B0034A33F /* AppDelegate.m */,
-				AC4D787D1D22A29B0034A33F /* ViewController.h */,
-				AC4D787E1D22A29B0034A33F /* ViewController.m */,
 				AC4D78801D22A29B0034A33F /* Main.storyboard */,
 				AC4D78831D22A29B0034A33F /* Assets.xcassets */,
 				AC4D78851D22A29B0034A33F /* LaunchScreen.storyboard */,
 				AC4D78881D22A29B0034A33F /* Info.plist */,
 				AC4D78771D22A29B0034A33F /* Supporting Files */,
+				ACE54E701D30F03900C3B3F0 /* JobsTableCell.h */,
+				ACE54E711D30F03900C3B3F0 /* JobsTableCell.m */,
+				ACE54E761D311CFE00C3B3F0 /* TorrentClientsTabViewController.h */,
+				ACE54E771D311CFE00C3B3F0 /* TorrentClientsTabViewController.m */,
+				ACAEF4C51D366A62005086C7 /* AddClientViewController.h */,
+				ACAEF4C61D366A62005086C7 /* AddClientViewController.m */,
+				AC29AB731D3E4372007A1750 /* TorrentDelegate.h */,
+				AC29AB741D3E4372007A1750 /* TorrentDelegate.m */,
+				AC29AB761D3E43B1007A1750 /* TorrentClient.h */,
+				AC9066251D435AF700774D7E /* uTorrent.h */,
+				AC9066261D435AF700774D7E /* uTorrent.m */,
+				AC29AB771D3E43B1007A1750 /* TorrentClient.m */,
+				AC9066221D435A3500774D7E /* Transmission.h */,
+				AC9066231D435A3500774D7E /* Transmission.m */,
+				AC09B32C1D4789FB004EFEB7 /* NSString+StringCategory.h */,
+				AC09B32D1D4789FB004EFEB7 /* NSString+StringCategory.m */,
+				AC2E1FC61D4A3B9B00507252 /* NSNumber+StringCategory.h */,
+				AC2E1FC71D4A3B9B00507252 /* NSNumber+StringCategory.m */,
 			);
 			path = TransmissionManager;
 			sourceTree = "<group>";
@@ -117,6 +244,20 @@
 		AC4D78771D22A29B0034A33F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ACBD312D1D2D2DCA00CC3A74 /* gear.png */,
+				ACBD312E1D2D2DCA00CC3A74 /* gear@2x.png */,
+				ACBD312F1D2D2DCA00CC3A74 /* Gripper.png */,
+				ACBD31301D2D2DCA00CC3A74 /* Gripper@2x.png */,
+				ACBD31311D2D2DCA00CC3A74 /* info.png */,
+				ACBD31321D2D2DCA00CC3A74 /* info@2x.png */,
+				ACBD31331D2D2DCA00CC3A74 /* PlayPause.png */,
+				ACBD31341D2D2DCA00CC3A74 /* PlayPause@2x.png */,
+				ACBD31351D2D2DCA00CC3A74 /* UIButtonBarPause.png */,
+				ACBD31361D2D2DCA00CC3A74 /* UIButtonBarPause@2x.png */,
+				ACBD31371D2D2DCA00CC3A74 /* UIButtonBarPlay.png */,
+				ACBD31381D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png */,
+				ACBD31391D2D2DCA00CC3A74 /* UIButtonBarStop.png */,
+				ACBD313A1D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png */,
 				AC4D78781D22A29B0034A33F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -147,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC4D78A11D22A29B0034A33F /* Build configuration list for PBXNativeTarget "TransmissionManager" */;
 			buildPhases = (
+				E4418DFC6206258F1C6DBF96 /* [CP] Check Pods Manifest.lock */,
 				AC4D78701D22A29B0034A33F /* Sources */,
 				AC4D78711D22A29B0034A33F /* Frameworks */,
 				AC4D78721D22A29B0034A33F /* Resources */,
+				B3AC9846C5626ECB583FE8A4 /* [CP] Embed Pods Frameworks */,
+				96D0617ADB514B4C5264F6F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC4D78A41D22A29B0034A33F /* Build configuration list for PBXNativeTarget "TransmissionManagerTests" */;
 			buildPhases = (
+				A81F8C11866178E062F50B53 /* [CP] Check Pods Manifest.lock */,
 				AC4D78891D22A29B0034A33F /* Sources */,
 				AC4D788A1D22A29B0034A33F /* Frameworks */,
 				AC4D788B1D22A29B0034A33F /* Resources */,
+				302009C0448BBCACA6B4CC69 /* [CP] Embed Pods Frameworks */,
+				9D1099B8481593DA94B15391 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +329,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC4D78A71D22A29B0034A33F /* Build configuration list for PBXNativeTarget "TransmissionManagerUITests" */;
 			buildPhases = (
+				19E379A00DF34AA72D7EE3CB /* [CP] Check Pods Manifest.lock */,
 				AC4D78941D22A29B0034A33F /* Sources */,
 				AC4D78951D22A29B0034A33F /* Frameworks */,
 				AC4D78961D22A29B0034A33F /* Resources */,
+				5986A7D98494A9AF711D72FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,9 +392,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACBD31481D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png in Resources */,
+				ACBD31411D2D2DCA00CC3A74 /* PlayPause.png in Resources */,
 				AC4D78871D22A29B0034A33F /* LaunchScreen.storyboard in Resources */,
 				AC4D78841D22A29B0034A33F /* Assets.xcassets in Resources */,
+				ACBD313E1D2D2DCA00CC3A74 /* Gripper@2x.png in Resources */,
+				ACBD313B1D2D2DCA00CC3A74 /* gear.png in Resources */,
+				ACBD31441D2D2DCA00CC3A74 /* UIButtonBarPause@2x.png in Resources */,
+				ACBD313C1D2D2DCA00CC3A74 /* gear@2x.png in Resources */,
 				AC4D78821D22A29B0034A33F /* Main.storyboard in Resources */,
+				ACBD31401D2D2DCA00CC3A74 /* info@2x.png in Resources */,
+				ACBD31431D2D2DCA00CC3A74 /* UIButtonBarPause.png in Resources */,
+				ACBD313D1D2D2DCA00CC3A74 /* Gripper.png in Resources */,
+				ACBD31471D2D2DCA00CC3A74 /* UIButtonBarStop.png in Resources */,
+				ACBD31451D2D2DCA00CC3A74 /* UIButtonBarPlay.png in Resources */,
+				ACBD31421D2D2DCA00CC3A74 /* PlayPause@2x.png in Resources */,
+				ACBD313F1D2D2DCA00CC3A74 /* info.png in Resources */,
+				ACBD31461D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png in Resources */,
+				AC55F6351D2E775E00A36505 /* TorrentJobsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,12 +429,146 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19E379A00DF34AA72D7EE3CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		302009C0448BBCACA6B4CC69 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TransmissionManagerTests/Pods-TransmissionManagerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5986A7D98494A9AF711D72FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TransmissionManagerUITests/Pods-TransmissionManagerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96D0617ADB514B4C5264F6F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TransmissionManager/Pods-TransmissionManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D1099B8481593DA94B15391 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TransmissionManagerTests/Pods-TransmissionManagerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A81F8C11866178E062F50B53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3AC9846C5626ECB583FE8A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TransmissionManager/Pods-TransmissionManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4418DFC6206258F1C6DBF96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC4D78701D22A29B0034A33F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC4D787F1D22A29B0034A33F /* ViewController.m in Sources */,
+				ACE54E781D311CFE00C3B3F0 /* TorrentClientsTabViewController.m in Sources */,
+				AC9066241D435A3500774D7E /* Transmission.m in Sources */,
+				ACAEF4C71D366A62005086C7 /* AddClientViewController.m in Sources */,
+				AC29AB781D3E43B1007A1750 /* TorrentClient.m in Sources */,
+				AC9066271D435AF700774D7E /* uTorrent.m in Sources */,
+				AC0866A11D447DFB00DFA65F /* AppConfig.m in Sources */,
+				AC2E1FC81D4A3B9B00507252 /* NSNumber+StringCategory.m in Sources */,
+				AC09B32E1D4789FB004EFEB7 /* NSString+StringCategory.m in Sources */,
+				ACCE29CA1D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m in Sources */,
+				ACE54E721D30F03900C3B3F0 /* JobsTableCell.m in Sources */,
+				AC55F6341D2E775E00A36505 /* TorrentJobsViewController.m in Sources */,
+				AC29AB751D3E4372007A1750 /* TorrentDelegate.m in Sources */,
 				AC4D787C1D22A29B0034A33F /* AppDelegate.m in Sources */,
 				AC4D78791D22A29B0034A33F /* main.m in Sources */,
 			);
@@ -312,6 +610,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AC4D78811D22A29B0034A33F /* Base */,
+				ACBD314A1D2D3AD300CC3A74 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -413,28 +712,33 @@
 		};
 		AC4D78A21D22A29B0034A33F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E4D7F3462374B957FB20DA8 /* Pods-TransmissionManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransmissionManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GeYue.Developer.TransmissionManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		AC4D78A31D22A29B0034A33F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2302CEC5DFBA268E5652FF91 /* Pods-TransmissionManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TransmissionManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GeYue.Developer.TransmissionManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
 		AC4D78A51D22A29B0034A33F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F78276FF178F54368BA490E /* Pods-TransmissionManagerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TransmissionManagerTests/Info.plist;
@@ -447,6 +751,7 @@
 		};
 		AC4D78A61D22A29B0034A33F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C31FF2CC531885BBBDB3C5D /* Pods-TransmissionManagerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TransmissionManagerTests/Info.plist;
@@ -459,6 +764,7 @@
 		};
 		AC4D78A81D22A29B0034A33F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 361CD123037A91DF264C46AD /* Pods-TransmissionManagerUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TransmissionManagerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -470,6 +776,7 @@
 		};
 		AC4D78A91D22A29B0034A33F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F89882C992612CC562ACDE /* Pods-TransmissionManagerUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TransmissionManagerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -498,6 +805,7 @@
 				AC4D78A31D22A29B0034A33F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC4D78A41D22A29B0034A33F /* Build configuration list for PBXNativeTarget "TransmissionManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +814,7 @@
 				AC4D78A61D22A29B0034A33F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC4D78A71D22A29B0034A33F /* Build configuration list for PBXNativeTarget "TransmissionManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +823,7 @@
 				AC4D78A91D22A29B0034A33F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

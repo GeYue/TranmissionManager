@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TorrentDelegate.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[TorrentDelegate sharedInstance] handleTorrentFile:@""];
+    
+    [[TorrentDelegate sharedInstance] performSelectorInBackground:@selector(jobsCheckInvocation) withObject:nil];
+    
     return YES;
 }
 
