@@ -6,13 +6,13 @@
 //  Copyright © 2016年 葛岳. All rights reserved.
 //
 
+#import "TSMessage.h"
 #import "TorrentDelegate.h"
 
 #import "Transmission.h"
 #import "uTorrent.h"
 #import "AppConfig.h"
 #import "AFURLSessionManager.h"
-
 
 @interface TorrentDelegate()
 
@@ -122,20 +122,52 @@ static TorrentDelegate * sharedInstance;
                         NSLog(@"NSMutableURLRequest sent dataTaskWithRequest failed. %@ %@", error, [error userInfo]);
                     }
                 }] resume];
-
-                double elapsed = (clock() - t) / CLOCKS_PER_SEC;
-                if (elapsed < refreshInterval) {
-                    NSLog(@"sleeping....");
-                    double intpart, fractpart;
-                    fractpart = modf(refreshInterval - elapsed, &intpart);
-                    struct timespec tspec = {
-                        .tv_sec = intpart,
-                        .tv_nsec = round(fractpart * 1e9)
-                    };
-                    nanosleep(&tspec, NULL);
-                }
+            };
+            double elapsed = (clock() - t) / CLOCKS_PER_SEC;
+            if (elapsed < refreshInterval) {
+                NSLog(@"sleeping....");
+                double intpart, fractpart;
+                fractpart = modf(refreshInterval - elapsed, &intpart);
+                struct timespec tspec = {
+                    .tv_sec = intpart,
+                    .tv_nsec = round(fractpart * 1e9)
+                };
+                nanosleep(&tspec, NULL);
             }
         }
+    }
+}
+
+- (void) credentialsCheckInvocation {
+    @autoreleasepool {
+        NSMutableURLRequest * request = [TorrentDelegate.sharedInstance.currentSelectedClient requestForCheckTorrentJobs];
+        if (!request) {
+            [TSMessage showNotificationWithTitle:@"Connection request failed."
+                                        subtitle:[TorrentDelegate.sharedInstance.currentSelectedClient getLastErrorDesc]
+                                            type:TSMessageNotificationTypeError];
+            return;
+        };
+        [request setTimeoutInterval:0x10];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc]
+                                        initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            NSString * notifcation = nil;
+            if (error) {
+                notifcation = [error localizedDescription];
+            } else {
+                NSData * data = (NSData *) responseObject;
+                NSMutableData * receivedData = [data mutableCopy];
+                if (![TorrentDelegate.sharedInstance.currentSelectedClient isValidJobsData:receivedData]) {
+                    notifcation = [TorrentDelegate.sharedInstance.currentSelectedClient parseTorrentFailure:receivedData];
+                } else {
+                    notifcation = @"No error info provided, are you sure that's the right port?";
+                }
+            }
+            if (notifcation) {
+                [TSMessage showNotificationWithTitle:@"Unable to authenticate" subtitle:notifcation type:TSMessageNotificationTypeError];
+            }
+        }];
     }
 }
 

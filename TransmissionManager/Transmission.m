@@ -28,7 +28,8 @@
 - (NSMutableURLRequest *) requestForCheckTorrentJobs {
     NSString * url = [self getAppendedURL];
 
-    __block NSString * localToken = @"";
+    __block NSString * localToken = nil;
+    __block NSString * errorDesc = nil;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     NSMutableURLRequest * oneReq = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [[[NSURLSession sharedSession] dataTaskWithRequest:oneReq
@@ -39,11 +40,16 @@
                                              dispatch_semaphore_signal(semaphore);
                                          } else {
                                              NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                             errorDesc = [error localizedDescription];
                                              dispatch_semaphore_signal(semaphore);
                                          }
                                      }] resume];
 
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    if (!localToken) {
+        [self setLastErrorDesc:errorDesc];
+        return nil;
+    }
     NSDictionary * parametersDict = @{@"method":@"torrent-get", @"arguments":@{@"fields":@[@"hashString", @"name", @"percentDone", @"status", @"sizeWhenDone", @"downloadedEver", @"uploadedEver", @"peersGettingFromUs", @"peersSendingToUs", @"rateDownload", @"rateUpload", @"eta", @"uploadRatio", @"addedDate", @"doneDate"]}};
 
     NSMutableURLRequest * req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url
@@ -64,6 +70,21 @@
         }
     }
     return NO;  
+}
+
+- (NSString *) parseTorrentFailure:(NSData *) data {
+    NSError * error = nil;
+    id JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    if (error)
+    {
+        NSString * utf8String = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if ([utf8String rangeOfString:@"<h1>401: Unauthorized</h1>"].location != NSNotFound)
+        {
+            return @"Incorrect or missing user credentials.";
+        }
+    }
+    
+    return [JSON respondsToSelector:@selector(objectForKey:)] ? [JSON objectForKey:@"result"] : nil;
 }
 
 - (NSDictionary *) getTorrentJobs {

@@ -6,6 +6,7 @@ target 'TransmissionManager' do
   # use_frameworks!
 	pod 'MGSwipeTableCell', '1.5.5'
 	pod 'AFNetworking', '3.1.0'
+    pod 'TSMessages', '0.9.12'
   # Pods for TransmissionManager
 
   target 'TransmissionManagerTests' do

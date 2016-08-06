@@ -19,10 +19,12 @@
 }
 
 @property (nonatomic, strong) NSData * jobData;
+@property (nonatomic, strong) NSString * lastErrorDesc;
 @property (nonatomic, strong, setter=setTemporaryDeletedJobs:, getter=getTemporaryDeletedJobs) NSMutableDictionary * temporaryDeleteJobs;
 @property (nonatomic, weak, setter=showNotification:) UIViewController * notificationViewController;
 
 - (void) addTemporaryDeleteJobs:(NSUInteger)objs forKey:(NSString *)key;
+- (NSString *) getLastErrorDesc;
 
 #pragma mark - Virtual Functions I - properties
 + (NSString *) name;
@@ -33,6 +35,7 @@
 + (BOOL) supportsDirectoryChoice;
 
 - (BOOL) isValidJobsData:(NSData *) data;
+- (NSString *) parseTorrentFailure:(NSData *) data;
 
 - (void) becameIdle;
 - (void) becameActive;

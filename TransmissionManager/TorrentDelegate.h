@@ -15,6 +15,7 @@
 - (void) handleTorrentFile:(NSString *) fileName;
 
 - (void) jobsCheckInvocation;
+- (void) credentialsCheckInvocation;
 
 @property (nonatomic, strong) TorrentClient * currentSelectedClient;
 @property (nonatomic, strong) NSArray * torrentSupportList;

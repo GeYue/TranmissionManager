@@ -25,6 +25,10 @@
     return self;
 }
 
+- (NSString *) getLastErrorDesc {
+    return self.lastErrorDesc;
+}
+
 - (void) becameIdle {
     
 }
@@ -81,6 +85,10 @@
 
 - (BOOL) isValidJobsData:(NSData *)data {
     return NO;
+}
+
+- (NSString *) parseTorrentFailure:(NSData *) data {
+    return nil;
 }
 
 - (void) insertTorrentJobsDictWithArray:(NSArray *)array intoDict:(NSMutableDictionary *)dict {

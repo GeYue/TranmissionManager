@@ -9,6 +9,7 @@
 #import "TorrentClientsTabViewController.h"
 #import "AddClientViewController.h"
 #import "AppConfig.h"
+#import "TorrentDelegate.h"
 
 @interface TorrentClientsTabViewController ()
 
@@ -48,6 +49,11 @@
             break;
         }
     }
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [TorrentDelegate.sharedInstance performSelector:@selector(credentialsCheckInvocation) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning {
