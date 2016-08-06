@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger, JobOrder) {
 @property (nonatomic, strong) NSArray * sortedAllJobs;
 @property (nonatomic, strong) NSMutableArray * filtedJobs;
 
+@property (nonatomic, strong) UILabel * header;
+
 @property (nonatomic, strong) UISearchController * searchController;
 - (IBAction)OpenWebUI:(id)sender;
 

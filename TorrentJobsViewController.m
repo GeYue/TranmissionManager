@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initialiseHeader];
     
     [self setupNavToolbarView];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
@@ -41,6 +42,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initialiseHeader
+{
+    self.header = [UILabel.alloc initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
+    self.header.backgroundColor = [UIColor colorWithRed:0 green:0.9 blue:.2 alpha:.85];
+    self.header.textColor = [UIColor whiteColor];
+    self.header.text = @"Attempting Connection";
+    self.header.font = [UIFont fontWithName:@"Arial" size:30 - 6];
+    self.header.textAlignment = NSTextAlignmentCenter;
+    self.header.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 }
 
 #pragma mark - IBAction functions
@@ -77,6 +89,10 @@
     cell.table = self;
     
     return cell;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.shouldRefresh ? self.header : nil;
 }
 
 #pragma mark - UISearchResultsUpdating
