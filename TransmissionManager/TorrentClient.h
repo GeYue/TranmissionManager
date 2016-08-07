@@ -25,6 +25,8 @@
 
 - (void) addTemporaryDeleteJobs:(NSUInteger)objs forKey:(NSString *)key;
 - (NSString *) getLastErrorDesc;
+- (void) setHostOnline:(BOOL)bOnline;
+- (BOOL) isHostOnline;
 
 #pragma mark - Virtual Functions I - properties
 + (NSString *) name;

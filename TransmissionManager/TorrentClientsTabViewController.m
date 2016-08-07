@@ -53,7 +53,8 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [TorrentDelegate.sharedInstance performSelector:@selector(credentialsCheckInvocation) withObject:nil];
+    [TorrentDelegate.sharedInstance performSelectorInBackground:@selector(credentialsCheckInvocation)
+                                                     withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning {

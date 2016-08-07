@@ -95,6 +95,13 @@ static TorrentDelegate * sharedInstance;
     }
 }
 
+- (void) postClientConnectionInfo:(BOOL)bOnline {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [TorrentDelegate.sharedInstance.currentSelectedClient setHostOnline:bOnline];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"update_torrent_jobs_header" object:nil];
+    });
+}
+
 - (void) jobsCheckInvocation {
     double refreshInterval = [[AppConfig.getInstance getValueForKey:@"runningConfig"][@"refresh_connection_seconds"] doubleValue];
     while (TRUE) {
@@ -110,6 +117,11 @@ static TorrentDelegate * sharedInstance;
                     if (!error) {
                         NSData * data = (NSData *) responseObject;
                         NSMutableData * receivedData = [data mutableCopy];
+                        
+                        if (receivedData.length > 0) {
+                            [self postClientConnectionInfo:TRUE];
+                        };
+                        
                         if ([TorrentDelegate.sharedInstance.currentSelectedClient isValidJobsData:receivedData]) {
                             TorrentDelegate.sharedInstance.currentSelectedClient.jobData = receivedData;
                             [TorrentDelegate.sharedInstance.currentSelectedClient handleTorrentJobs];
@@ -122,7 +134,9 @@ static TorrentDelegate * sharedInstance;
                         NSLog(@"NSMutableURLRequest sent dataTaskWithRequest failed. %@ %@", error, [error userInfo]);
                     }
                 }] resume];
-            };
+            } else {
+                [self postClientConnectionInfo:FALSE];
+            }
             double elapsed = (clock() - t) / CLOCKS_PER_SEC;
             if (elapsed < refreshInterval) {
                 NSLog(@"sleeping....");

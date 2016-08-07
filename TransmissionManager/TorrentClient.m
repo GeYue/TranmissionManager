@@ -41,6 +41,14 @@
     return currentJobsDict;
 }
 
+- (BOOL) isHostOnline {
+    return hostOnline;
+}
+
+- (void) setHostOnline:(BOOL)bOnline {
+    hostOnline = bOnline;
+}
+
 - (NSString *) getBasedURL {
     NSString * urlString;
     NSString * port = [AppConfig.getInstance currentClientCfgDict][@"port"];

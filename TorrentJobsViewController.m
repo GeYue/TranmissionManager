@@ -11,7 +11,7 @@
 #import "JobsTableCell.h"
 #import "TorrentDelegate.h"
 
-@interface TorrentJobsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
+@interface TorrentJobsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 
 @end
 
@@ -24,6 +24,7 @@
     [self setupNavToolbarView];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     [self.searchController setSearchResultsUpdater:self];
+    self.searchController.delegate = self;
     [self.searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
@@ -31,6 +32,8 @@
     self.searchController.definesPresentationContext = TRUE;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateJobsNotification)
                                                  name:@"update_torrent_jobs_table" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateHeaderNotification)
+                                                 name:@"update_torrent_jobs_header" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,6 +56,10 @@
     self.header.font = [UIFont fontWithName:@"Arial" size:30 - 6];
     self.header.textAlignment = NSTextAlignmentCenter;
     self.header.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - IBAction functions
@@ -101,6 +108,14 @@
     [self.tableView reloadData];
 }
 
+- (void) willPresentSearchController:(UISearchController *)searchController {
+    self.shouldRefresh = NO;
+}
+
+- (void) willDismissSearchController:(UISearchController *)searchController {
+    self.shouldRefresh = YES;
+}
+
 #pragma mark - Notification Observer
 
 - (void) receiveUpdateJobsNotification {
@@ -109,6 +124,16 @@
         [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
     }
     [self refreshDownloadUploadTotals];
+}
+
+- (void) receiveUpdateHeaderNotification {
+    if ([TorrentDelegate.sharedInstance.currentSelectedClient isHostOnline]) {
+        self.header.text = @"Host Online";
+        self.header.backgroundColor = [UIColor colorWithRed:.302 green:.584 blue:.772 alpha:.85];
+    } else {
+        self.header.text = @"Host Offline";
+        self.header.backgroundColor = [UIColor colorWithRed:.98 green:.196 blue:.196 alpha:.85];
+    }
 }
 
 #pragma mark - Others
