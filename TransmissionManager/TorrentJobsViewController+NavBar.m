@@ -170,7 +170,7 @@
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSMutableDictionary * mutableDict = [[[NSUserDefaults standardUserDefaults] objectForKey:@"runningConfig"] mutableCopy];
     if (0 == component) {
-        mutableDict[@"order_by"] = [NSString stringWithFormat:@"%ld", (0 == row) ? NSOrderedAscending : NSOrderedAscending ];
+        mutableDict[@"order_by"] = [NSString stringWithFormat:@"%ld", (0 == row) ? NSOrderedAscending : NSOrderedDescending ];
     } else {
         mutableDict[@"sort_by"] = [NSString stringWithFormat:@"%ld", row];
     }
