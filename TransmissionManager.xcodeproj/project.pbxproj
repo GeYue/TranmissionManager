@@ -41,6 +41,7 @@
 		ACBD31461D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31381D2D2DCA00CC3A74 /* UIButtonBarPlay@2x.png */; };
 		ACBD31471D2D2DCA00CC3A74 /* UIButtonBarStop.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD31391D2D2DCA00CC3A74 /* UIButtonBarStop.png */; };
 		ACBD31481D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACBD313A1D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png */; };
+		ACC08B091D58AEF600DB3560 /* TorrentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC08B081D58AEF600DB3560 /* TorrentDetailViewController.m */; };
 		ACCE29CA1D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCE29C91D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m */; };
 		ACE54E721D30F03900C3B3F0 /* JobsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE54E711D30F03900C3B3F0 /* JobsTableCell.m */; };
 		ACE54E781D311CFE00C3B3F0 /* TorrentClientsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE54E771D311CFE00C3B3F0 /* TorrentClientsTabViewController.m */; };
@@ -120,6 +121,8 @@
 		ACBD31391D2D2DCA00CC3A74 /* UIButtonBarStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIButtonBarStop.png; path = Pictures/UIButtonBarStop.png; sourceTree = SOURCE_ROOT; };
 		ACBD313A1D2D2DCA00CC3A74 /* UIButtonBarStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIButtonBarStop@2x.png"; path = "Pictures/UIButtonBarStop@2x.png"; sourceTree = SOURCE_ROOT; };
 		ACBD314A1D2D3AD300CC3A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		ACC08B071D58AEF600DB3560 /* TorrentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentDetailViewController.h; sourceTree = "<group>"; };
+		ACC08B081D58AEF600DB3560 /* TorrentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentDetailViewController.m; sourceTree = "<group>"; };
 		ACCE29C51D2FD1C00037C117 /* TorrentJobsViewController+NavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TorrentJobsViewController+NavBar.h"; sourceTree = "<group>"; };
 		ACCE29C91D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TorrentJobsViewController+NavBar.m"; sourceTree = "<group>"; };
 		ACE54E701D30F03900C3B3F0 /* JobsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsTableCell.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				ACE54E701D30F03900C3B3F0 /* JobsTableCell.h */,
 				ACE54E711D30F03900C3B3F0 /* JobsTableCell.m */,
 				ACE54E761D311CFE00C3B3F0 /* TorrentClientsTabViewController.h */,
+				ACC08B071D58AEF600DB3560 /* TorrentDetailViewController.h */,
+				ACC08B081D58AEF600DB3560 /* TorrentDetailViewController.m */,
 				ACE54E771D311CFE00C3B3F0 /* TorrentClientsTabViewController.m */,
 				ACAEF4C51D366A62005086C7 /* AddClientViewController.h */,
 				ACAEF4C61D366A62005086C7 /* AddClientViewController.m */,
@@ -564,6 +569,7 @@
 				AC9066271D435AF700774D7E /* uTorrent.m in Sources */,
 				AC0866A11D447DFB00DFA65F /* AppConfig.m in Sources */,
 				AC2E1FC81D4A3B9B00507252 /* NSNumber+StringCategory.m in Sources */,
+				ACC08B091D58AEF600DB3560 /* TorrentDetailViewController.m in Sources */,
 				AC09B32E1D4789FB004EFEB7 /* NSString+StringCategory.m in Sources */,
 				ACCE29CA1D2FD52F0037C117 /* TorrentJobsViewController+NavBar.m in Sources */,
 				ACE54E721D30F03900C3B3F0 /* JobsTableCell.m in Sources */,

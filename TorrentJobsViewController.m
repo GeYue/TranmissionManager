@@ -8,6 +8,7 @@
 
 #import "TorrentJobsViewController.h"
 #import "TorrentJobsViewController+NavBar.h"
+#import "TorrentDetailViewController.h"
 #import "JobsTableCell.h"
 #import "TorrentDelegate.h"
 
@@ -86,12 +87,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary * currentJob = nil;
-    if (self.searchController.active && self.searchController.searchBar.text.length > 0) {
-        currentJob = self.filtedJobs[indexPath.row];
-    } else {
-        currentJob = self.sortedAllJobs[indexPath.row];
-    }
+    NSDictionary * currentJob = [self getCurrentJobDict:indexPath.row];
     JobsTableCell *cell = [[JobsTableCell alloc] jobsTableViewCell:tableView JobContentInfo:currentJob];
     cell.table = self;
     
@@ -100,6 +96,15 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return self.shouldRefresh ? self.header : nil;
+}
+
+#pragma mark - Table View Delegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    TorrentDetailViewController * detailViewController = [storyBoard instantiateViewControllerWithIdentifier:@"TorrentDetailViewController"];
+    detailViewController.jobDict = [self getCurrentJobDict:indexPath.row];
+    [self.navigationController pushViewController:detailViewController animated:YES];    
 }
 
 #pragma mark - UISearchResultsUpdating
@@ -161,6 +166,16 @@
         }
     }
     //[self sortArray:filtedJobs];
+}
+
+- (NSDictionary *) getCurrentJobDict:(NSInteger) index {
+    NSDictionary * currentJob = nil;
+    if (self.searchController.active && self.searchController.searchBar.text.length > 0) {
+        currentJob = self.filtedJobs[index];
+    } else {
+        currentJob = self.sortedAllJobs[index];
+    }
+    return currentJob;
 }
 
 - (JobOrder) getJobStatusENUM:(NSString *) strStatus {
