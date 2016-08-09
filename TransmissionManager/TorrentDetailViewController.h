@@ -11,5 +11,6 @@
 @interface TorrentDetailViewController : UITableViewController
 
 @property (strong, nonatomic) NSDictionary * jobDict;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *playPauseButton;
 
 @end

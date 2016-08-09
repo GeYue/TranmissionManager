@@ -380,7 +380,7 @@
                                 <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kSE-7I-ued" id="bCp-Pa-y3q">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TtB-zY-Obj">
@@ -397,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="72" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="50y-hr-bxF" id="j20-O9-Xc5">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aoH-qA-EgW">
@@ -420,11 +420,22 @@
                         </prototypes>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem image="UIButtonBarPlay.png" id="CUy-q8-itI" userLabel="PlayPause"/>
+                        <barButtonItem image="UIButtonBarPlay.png" id="CUy-q8-itI" userLabel="PlayPause">
+                            <connections>
+                                <action selector="playPauseTorrentJob:" destination="tpy-v0-yB2" id="CGJ-Tz-eNz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zGU-hw-O0r"/>
-                        <barButtonItem image="UIButtonBarStop.png" id="bpl-AT-gkn" userLabel="Remove"/>
+                        <barButtonItem image="UIButtonBarStop.png" id="bpl-AT-gkn" userLabel="Remove">
+                            <connections>
+                                <action selector="removeTorrentJob:" destination="tpy-v0-yB2" id="P0f-xv-pq5"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="playPauseButton" destination="CUy-q8-itI" id="xbl-BG-zfg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGZ-8r-Gmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
