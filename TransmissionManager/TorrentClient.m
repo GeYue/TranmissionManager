@@ -160,4 +160,15 @@
     return nil;
 }
 
+- (void) pauseTorrent:(NSString *)hash {
+
+}
+
+- (void) resumeTorrent:(NSString *)hash {
+
+}
+
+- (void) removeTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
+    
+}
 @end

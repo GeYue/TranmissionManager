@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSDateFormatter * formatter;
 @property (nonatomic, assign) BOOL shouleRefresh;
 @property (nonatomic, strong) NSArray * identifierArray;
+
 @end
 
 @implementation TorrentDetailViewController
@@ -73,6 +74,11 @@
         //return [self.identifierArray[section] count] - 2 + self.client.supportsAddedDate + (self.client.supportsCompletedDate && [hashDict[@"progress"] doubleValue] == [self.client.class completeNumber].doubleValue);
     //}
     return [self.identifierArray[section] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.jobDict[@[@"name", @"hash"][section]];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -152,8 +158,29 @@
 
 #pragma mark - IBActions
 - (IBAction)playPauseTorrentJob:(id)sender {
+    NSLog(@"playPauseButton pressed.");
+    if ([self.jobDict[@"status"] isEqualToString:@"Paused"]) {
+        [self.client resumeTorrent:self.jobDict[@"hash"]];
+    } else {
+        [self.client pauseTorrent:self.jobDict[@"hash"]];
+    }
 }
 
 - (IBAction)removeTorrentJob:(id)sender {
+    NSLog(@"removeTorrentButton pressed.");
+    
+    __weak TorrentDetailViewController * weakSelf  = self;
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Delete Torrent Job" message:@"Are you sure to delete current job?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction * remove = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf.client removeTorrent:weakSelf.jobDict[@"hash"] removeWithData:NO];
+    }];
+    UIAlertAction *removeWithData = [UIAlertAction actionWithTitle:@"RemoveWithData" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf.client removeTorrent:weakSelf.jobDict[@"hash"] removeWithData:YES];
+    }];
+    [alertController addAction:cancel];
+    [alertController addAction:remove];
+    [alertController addAction:removeWithData];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 @end
