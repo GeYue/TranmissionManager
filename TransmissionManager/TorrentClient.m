@@ -8,6 +8,7 @@
 
 #import "TorrentClient.h"
 #import "AppConfig.h"
+#import "MBProgressHUD.h"
 
 @interface TorrentClient ()
 
@@ -156,19 +157,41 @@
     return nil;
 }
 
+- (void) virtualPauseTorrent:(NSString *)hash {
+    
+}
+
+- (void) virtualResumeTorrent:(NSString *)hash {
+    
+}
+
+- (void) virtualRemoveTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
+    
+}
+
 - (id) getTorrentJobs {
     return nil;
 }
 
 - (void) pauseTorrent:(NSString *)hash {
-
+    [self virtualPauseTorrent:hash];
+    UIView * dispView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
+    [MBProgressHUD showHUDAddedTo:dispView animated:YES];
+        
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:dispView animated:YES];
+        });
+    });
+    
 }
 
 - (void) resumeTorrent:(NSString *)hash {
-
+    [self virtualResumeTorrent:hash];
 }
 
 - (void) removeTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
-    
+    [self virtualRemoveTorrent:hash removeWithData:bRemoveData];
 }
 @end

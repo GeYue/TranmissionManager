@@ -127,15 +127,15 @@
     return tempDict;
 }
 
-- (void) pauseTorrent:(NSString *)hash {
+- (void) virtualPauseTorrent:(NSString *)hash {
     
 }
 
-- (void) resumeTorrent:(NSString *)hash {
+- (void) virtualResumeTorrent:(NSString *)hash {
     
 }
 
-- (void) removeTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
+- (void) virtualRemoveTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
     
 }
 

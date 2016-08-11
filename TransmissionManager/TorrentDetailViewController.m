@@ -30,7 +30,7 @@
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateStyle:NSDateFormatterShortStyle];
     [self.formatter setTimeStyle:NSDateFormatterMediumStyle];
-    self.identifierArray = @[@[@"", @"Size", @"Downloaded", @"Uploaded", @"Completed", @"Date Added", @"Date Finished"], @[@"Download", @"Upload", @"Seeds Connected", @"Peers Connected", @"Ratio", @"ETA"]];
+    self.identifierArray = @[@[@"Status", @"Size", @"Downloaded", @"Uploaded", @"Completed", @"Date Added", @"Date Finished"], @[@"Download", @"Upload", @"Seeds Connected", @"Peers Connected", @"Ratio", @"ETA"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateTableNotification)
                                                  name:@"update_torrent_jobs_table" object:nil];
@@ -83,36 +83,37 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"TorrentDetailCell"];
-    
-    cell.textLabel.text = [[self.identifierArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    UILabel * textLabel = [cell viewWithTag:1];
+    UILabel * detailTextLabel = [cell viewWithTag:2];
+    textLabel.text = [[self.identifierArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     switch (indexPath.section)
     {
         case 0:
             switch (indexPath.row)
         {
             case 0:
-                cell.textLabel.text = self.jobDict[@"status"];
+                detailTextLabel.text = self.jobDict[@"status"];
                 break;
             case 1:
-                cell.detailTextLabel.text = [self.jobDict[@"size"] sizeString];
+                detailTextLabel.text = [self.jobDict[@"size"] sizeString];
                 break;
             case 2:
-                cell.detailTextLabel.text = self.jobDict[@"downloaded"];
+                detailTextLabel.text = self.jobDict[@"downloaded"];
                 break;
             case 3:
-                cell.detailTextLabel.text = self.jobDict[@"uploaded"];
+                detailTextLabel.text = self.jobDict[@"uploaded"];
                 break;
             case 4:
             {
                 double completeValue = [self.client.class completeNumber].doubleValue;
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f%%", completeValue ? [self.jobDict[@"progress"] doubleValue] / completeValue * 100 : [self.jobDict[@"progress"] doubleValue] / [self.jobDict[@"size"] doubleValue]];
+                detailTextLabel.text = [NSString stringWithFormat:@"%.1f%%", completeValue ? [self.jobDict[@"progress"] doubleValue] / completeValue * 100 : [self.jobDict[@"progress"] doubleValue] / [self.jobDict[@"size"] doubleValue]];
                 break;
             }
             case 5:
-                cell.detailTextLabel.text = [self.formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.jobDict[@"dateAdded"] integerValue]]];
+                detailTextLabel.text = [self.formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.jobDict[@"dateAdded"] integerValue]]];
                 break;
             case 6:
-                cell.detailTextLabel.text = [self.formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.jobDict[@"dateDone"] integerValue]]];
+                detailTextLabel.text = [self.formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.jobDict[@"dateDone"] integerValue]]];
                 break;
         }
             break;
@@ -120,22 +121,22 @@
             switch (indexPath.row)
         {
             case 0:
-                cell.detailTextLabel.text = [self.jobDict[@"downloadSpeed"] description];
+                detailTextLabel.text = [self.jobDict[@"downloadSpeed"] description];
                 break;
             case 1:
-                cell.detailTextLabel.text = [self.jobDict[@"uploadSpeed"] description];
+                detailTextLabel.text = [self.jobDict[@"uploadSpeed"] description];
                 break;
             case 2:
-                cell.detailTextLabel.text = [self.jobDict[@"seedsConnected"] description];
+                detailTextLabel.text = [self.jobDict[@"seedsConnected"] description];
                 break;
             case 3:
-                cell.detailTextLabel.text = [self.jobDict[@"peersConnected"] description];
+                detailTextLabel.text = [self.jobDict[@"peersConnected"] description];
                 break;
             case 4:
-                cell.detailTextLabel.text = [self.jobDict[@"ratio"] description];
+                detailTextLabel.text = [self.jobDict[@"ratio"] description];
                 break;
             case 5:
-                cell.detailTextLabel.text = [self.jobDict[@"ETA"] description];
+                detailTextLabel.text = [self.jobDict[@"ETA"] description];
                 break;
         }
             break;
@@ -175,7 +176,7 @@
     UIAlertAction * remove = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.client removeTorrent:weakSelf.jobDict[@"hash"] removeWithData:NO];
     }];
-    UIAlertAction *removeWithData = [UIAlertAction actionWithTitle:@"RemoveWithData" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *removeWithData = [UIAlertAction actionWithTitle:@"RemoveWithData" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakSelf.client removeTorrent:weakSelf.jobDict[@"hash"] removeWithData:YES];
     }];
     [alertController addAction:cancel];
