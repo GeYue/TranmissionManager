@@ -25,11 +25,11 @@
     return @"/transmission/rpc/";
 }
 
-- (NSMutableURLRequest *) requestForCheckTorrentJobs {
+- (NSString *) getSessionId {
     NSString * url = [self getAppendedURL];
-
+    
     __block NSString * localToken = nil;
-    __block NSString * errorDesc = nil;
+    __weak Transmission * weakSelf = self;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     NSMutableURLRequest * oneReq = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [[[NSURLSession sharedSession] dataTaskWithRequest:oneReq
@@ -40,22 +40,26 @@
                                              dispatch_semaphore_signal(semaphore);
                                          } else {
                                              NSLog(@"Error: %@ %@", error, [error userInfo]);
-                                             errorDesc = [error localizedDescription];
+                                             weakSelf.lastErrorDesc = [error localizedDescription];
                                              dispatch_semaphore_signal(semaphore);
                                          }
                                      }] resume];
-
+    
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    if (!localToken) {
-        [self setLastErrorDesc:errorDesc];
+    return localToken;
+}
+
+- (NSMutableURLRequest *) requestForCheckTorrentJobs {
+    NSString * strSessionId = [self getSessionId];
+    if (!strSessionId) {
         return nil;
     }
     NSDictionary * parametersDict = @{@"method":@"torrent-get", @"arguments":@{@"fields":@[@"hashString", @"name", @"percentDone", @"status", @"sizeWhenDone", @"downloadedEver", @"uploadedEver", @"peersGettingFromUs", @"peersSendingToUs", @"rateDownload", @"rateUpload", @"eta", @"uploadRatio", @"addedDate", @"doneDate"]}};
 
-    NSMutableURLRequest * req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url
+    NSMutableURLRequest * req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self getAppendedURL]
                                                                              parameters:parametersDict error:nil];
     [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [req setValue:localToken forHTTPHeaderField:@"X-Transmission-Session-Id"];
+    [req setValue:strSessionId forHTTPHeaderField:@"X-Transmission-Session-Id"];
 
     return req;
 }
@@ -127,16 +131,37 @@
     return tempDict;
 }
 
-- (void) virtualPauseTorrent:(NSString *)hash {
-    
+- (NSMutableURLRequest *) HTTPRequestWithMethod:(NSString *)method andHashes:(NSArray *)hashArray {
+    NSString * strSessionId = [self getSessionId];
+    if (!strSessionId)
+        return nil;
+    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self getAppendedURL]]];
+    [req setHTTPMethod:@"POST"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:strSessionId forHTTPHeaderField:@"X-Transmission-Session-Id"];
+    [req setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{@"method":method, @"arguments":@{@"ids":hashArray}}
+                                                     options:0 error:nil]];
+    return req;
 }
 
-- (void) virtualResumeTorrent:(NSString *)hash {
-    
+- (NSMutableURLRequest *) virtualPauseTorrent:(NSString *)hash {
+    return [self HTTPRequestWithMethod:@"torrent-stop" andHashes:@[hash]];
 }
 
-- (void) virtualRemoveTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
-    
+- (NSMutableURLRequest *) virtualResumeTorrent:(NSString *)hash {
+    return [self HTTPRequestWithMethod:@"torrent-start" andHashes:@[hash]];
+}
+
+- (NSMutableURLRequest *) virtualRemoveTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
+    NSString * strSessionId = [self getSessionId];
+    if (!strSessionId)
+        return nil;
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.getAppendedURL]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:strSessionId forHTTPHeaderField:@"X-Transmission-Session-Id"];
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{@"method":@"torrent-remove", @"arguments":@{@"ids":@[hash], @"delete-local-data":@(bRemoveData)}} options:0 error:nil]];
+    return request;
 }
 
 @end

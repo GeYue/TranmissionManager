@@ -36,6 +36,7 @@
                               [MGSwipeButton buttonWithTitle:@"Resume" backgroundColor:[UIColor greenColor]
                                                     callback:^BOOL(MGSwipeTableCell *sender) {
                                                         NSLog(@"Table cell resume action called.");
+                                                        [TorrentDelegate.sharedInstance.currentSelectedClient resumeTorrent:jobInfo[@"hash"]];
                                                         return YES; }]];
         
     } else {
@@ -43,6 +44,7 @@
                               [MGSwipeButton buttonWithTitle:@"Pause" backgroundColor:[UIColor lightGrayColor]
                                                     callback:^BOOL(MGSwipeTableCell *sender) {
                                                         NSLog(@"Table cell pause action called.");
+                                                        [TorrentDelegate.sharedInstance.currentSelectedClient pauseTorrent:jobInfo[@"hash"]];
                                                         return YES; }]];
     }
     cell.torrentName.text = jobInfo[@"name"];
