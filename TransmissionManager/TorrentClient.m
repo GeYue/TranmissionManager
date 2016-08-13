@@ -222,6 +222,26 @@
 }
 
 - (void) removeTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
-    [self virtualRemoveTorrent:hash removeWithData:bRemoveData];
+    NSMutableURLRequest * req = [self virtualRemoveTorrent:hash removeWithData:bRemoveData];
+    if (!req)
+        return;
+    
+    UIView * dispView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:dispView animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = @"Deleting";
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                hud.progress = 1L;
+                hud.labelText = @"Deleted";
+                [MBProgressHUD hideHUDForView:dispView animated:YES];
+            });
+        } else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }] resume];
 }
 @end

@@ -25,11 +25,24 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TorrentJobsViewController" owner:self options:nil] objectAtIndex:index];
     }
     
-    MGSwipeButton *delete = [MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor]
-                                                  callback:^BOOL(MGSwipeTableCell *sender) {
-                                                      NSLog(@"Table cell delete action called.");
-                                                      return YES;
-                                                  }];
+    MGSwipeButton *delete = [MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        NSLog(@"Table cell delete action called.");
+        
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Delete Torrent Job" message:@"Are you sure to delete current job?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction * remove = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [TorrentDelegate.sharedInstance.currentSelectedClient removeTorrent:jobInfo[@"hash"] removeWithData:NO];
+        }];
+        UIAlertAction *removeWithData = [UIAlertAction actionWithTitle:@"RemoveWithData" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [TorrentDelegate.sharedInstance.currentSelectedClient removeTorrent:jobInfo[@"hash"] removeWithData:YES];
+        }];
+        [alertController addAction:cancel];
+        [alertController addAction:remove];
+        [alertController addAction:removeWithData];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+        
+        return YES;
+    }];
     
     if ([jobInfo[@"status"] isEqualToString:@"Paused"]){
         cell.rightButtons = @[delete,
