@@ -8,6 +8,7 @@
 
 #import "TorrentJobsViewController+NavBar.h"
 #import "TorrentClientsTabViewController.h"
+#import "UIInfoViewController.h"
 
 
 @implementation TorrentJobsViewController (NavBar) 
@@ -91,6 +92,9 @@
         case 2:
         {
             NSLog(@"This is button info.");
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            UIInfoViewController * infoViewController = [storyboard instantiateViewControllerWithIdentifier:@"UIInfoViewController"];
+            [self.navigationController pushViewController:infoViewController animated:YES];
         }
             break;
         case 3:
