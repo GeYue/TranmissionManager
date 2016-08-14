@@ -12,10 +12,11 @@
 @implementation UIInfoViewController
 
 - (void) viewDidLoad {
+    [super viewDidLoad];
     NSString * filePath = [[NSBundle mainBundle] pathForResource:@"000.gif" ofType:nil];
     NSData * imageData = [NSData dataWithContentsOfFile:filePath];
     
-    ExtSCGifImageView * gifImageView = [[ExtSCGifImageView alloc] initWithFrame:self.view.bounds];
+    ExtSCGifImageView * gifImageView = [[ExtSCGifImageView alloc] initWithFrame:CGRectMake(30, 50, 256, 256)];
     [gifImageView setData:imageData];
     
     [self.view addSubview:gifImageView];    

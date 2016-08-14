@@ -41,6 +41,8 @@
 {
     [self.navigationController.toolbar setHidden:NO];
     self.shouldRefresh = YES;
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
