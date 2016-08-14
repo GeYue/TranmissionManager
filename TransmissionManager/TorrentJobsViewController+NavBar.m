@@ -57,17 +57,16 @@
     [sortOrderPicker selectRow:enumOrderBy inComponent:1 animated:YES];
     [alertCtrler.view addSubview:sortOrderPicker];
     
-    UIAlertAction * confirmAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction * _Nonnull action) {
-                                                               if (self.searchController.active) {
-                                                                   [self sortArray:self.filtedJobs];
-                                                               } else {
-                                                                   NSMutableArray *dictValues = [self.sortedAllJobs mutableCopy];
-                                                                   [self sortArray:dictValues];
-                                                                   self.sortedAllJobs = dictValues;
-                                                               }
-                                                               [self.tableView performSelector:@selector(reloadData)];
-                                                               }];
+    UIAlertAction * confirmAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (self.searchController.active) {
+            [self sortArray:self.filtedJobs];
+        } else {
+            NSMutableArray *dictValues = [self.sortedAllJobs mutableCopy];
+            [self sortArray:dictValues];
+            self.sortedAllJobs = dictValues;
+        }
+        [self.tableView performSelector:@selector(reloadData)];
+    }];
     
     [alertCtrler addAction:confirmAction];
     UIPopoverPresentationController * popoverController = [alertCtrler popoverPresentationController];

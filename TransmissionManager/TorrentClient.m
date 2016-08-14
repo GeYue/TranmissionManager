@@ -18,7 +18,7 @@
 
 @implementation TorrentClient
 
--(id) init {
+- (id) init {
     if (self = [super init]) {
         currentJobsDict = [[NSMutableDictionary alloc] init];
         self.jobData = [[NSMutableData alloc] init];
@@ -173,75 +173,45 @@
     return nil;
 }
 
-- (void) pauseTorrent:(NSString *)hash {
-    NSMutableURLRequest * req = [self virtualPauseTorrent:hash];
-    if (!req)
+- (void) sendRequestShowIndicator:(NSMutableURLRequest *)request startText:(NSString *)strStart finishText:(NSString *)strEnd {
+    if (!request)
         return;
-
+    
     UIView * dispView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:dispView animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.labelText = @"Pausing";
-
-    [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [hud performSelector:@selector(setLabelText:) withObject:strStart];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^{
                 hud.progress = 1L;
-                hud.labelText = @"Paused";
+                [hud performSelector:@selector(setLabelText:) withObject:strEnd];
                 [MBProgressHUD hideHUDForView:dispView animated:YES];
             });
         } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^{
+                hud.progress = 1L;
+                hud.backgroundColor = [UIColor darkGrayColor];
+                [hud performSelector:@selector(setLabelText:) withObject:@"Failed"];
+                [MBProgressHUD hideHUDForView:dispView animated:YES];
+            });
         }
     }] resume];
+}
+
+- (void) pauseTorrent:(NSString *)hash {
+    [self sendRequestShowIndicator:[self virtualPauseTorrent:hash] startText:@"Pausing" finishText:@"Paused"];
 }
 
 - (void) resumeTorrent:(NSString *)hash {
-    NSMutableURLRequest * req = [self virtualResumeTorrent:hash];
-    if (!req)
-        return;
-    
-    UIView * dispView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:dispView animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.labelText = @"Resuming";
-
-    [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^{
-                hud.progress = 1L;
-                hud.labelText = @"Resumed";
-                [MBProgressHUD hideHUDForView:dispView animated:YES];
-            });
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }] resume];
+    [self sendRequestShowIndicator:[self virtualResumeTorrent:hash] startText:@"Resuming" finishText:@"Resumed"];
 }
 
 - (void) removeTorrent:(NSString *)hash removeWithData:(BOOL)bRemoveData {
-    NSMutableURLRequest * req = [self virtualRemoveTorrent:hash removeWithData:bRemoveData];
-    if (!req)
-        return;
-    
-    UIView * dispView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:dispView animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.labelText = @"Deleting";
-    
-    [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^{
-                hud.progress = 1L;
-                hud.labelText = @"Deleted";
-                [MBProgressHUD hideHUDForView:dispView animated:YES];
-            });
-        } else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }] resume];
+    [self sendRequestShowIndicator:[self virtualRemoveTorrent:hash removeWithData:bRemoveData] startText:@"Deleting" finishText:@"Deleted"];
 }
 @end
