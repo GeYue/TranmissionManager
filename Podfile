@@ -8,6 +8,9 @@ target 'TransmissionManager' do
 	pod 'AFNetworking', '3.1.0'
 	pod 'TSMessages', '0.9.12'
 	pod 'MBProgressHUD', '~> 1.0.0'
+	pod 'AMap2DMap', '4.1.1'
+	pod 'AMapSearch', '4.2.0'
+	pod 'AMapLocation', '2.1.0'
   # Pods for TransmissionManager
 
   target 'TransmissionManagerTests' do

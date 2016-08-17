@@ -9,6 +9,17 @@
 #import "UIInfoViewController.h"
 #import "ExtSCGifImageView.h"
 
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import <MAMapKit/MAMapKit.h>
+
+@interface UIInfoViewController () <MAMapViewDelegate>
+{
+    
+    MAMapView * _mapView;
+}
+@end
+
 @implementation UIInfoViewController
 
 - (void) viewDidLoad {
@@ -19,7 +30,13 @@
     ExtSCGifImageView * gifImageView = [[ExtSCGifImageView alloc] initWithFrame:CGRectMake(30, 50, 256, 256)];
     [gifImageView setData:imageData];
     
-    [self.view addSubview:gifImageView];    
+    [AMapServices sharedServices].apiKey = @"951fc1b331728f94dbd8ac710091430c";
+    
+    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(30, 300, CGRectGetWidth(self.view.bounds)-60, CGRectGetHeight(self.view.bounds)-100)];
+    _mapView.delegate = self;
+    
+    [self.view addSubview:gifImageView];
+    [self.view addSubview:_mapView];
 }
 
 @end
